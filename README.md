@@ -24,7 +24,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Clone this repository
 
-`https://github.com/imahnama/React-Capstone.git`
+`https://github.com/imahnama/track-it-frontend.git`
 
 # Go into the repository
 
@@ -112,6 +112,4 @@ Give a ⭐️ if you like this project!
 ## Acknowledgements
 
 - [Microverse](https://www.microverse.org/)
-- [The Odin Project](https://www.theodinproject.com/)
-- [Freecodecamp](http://freecodecamp.org/)
-- [LetsCode](https://www.youtube.com/watch?v=GbAENvrGbDo)
+- [Rails API Tutorial](https://www.digitalocean.com/community/tutorials/build-a-restful-json-api-with-rails-5-part-one)
