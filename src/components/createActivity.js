@@ -21,8 +21,6 @@ const CreateActivity = () => {
     event.preventDefault();
   };
 
-  console.log(title);
-
   const validToken = checkToken();
   if (validToken === false) { return (<Redirect to="/" />); }
 

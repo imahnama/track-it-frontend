@@ -1,6 +1,6 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { checkToken } from '../helpers/token';
 import SideSection from './sideSection';
 import SideNav from './sideNav';
@@ -13,7 +13,7 @@ class HomePage extends Component {
 
     return (
       <div className="d-flex flex-row mt-1 main-div">
-         <SideNav />
+        <SideNav />
         <SideSection />
       </div>
     );
