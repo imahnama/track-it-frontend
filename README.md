@@ -9,7 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Track it Application
 
-- This application helps a User track their steps. Users can record how much time they spent doing a certain activity. The application is responsive.
+- This application helps a User track their steps. Users can record how much time they spent doing a certain activity. This application is responsive.
 
 ## Live Version
 
