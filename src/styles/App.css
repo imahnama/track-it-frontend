@@ -18,22 +18,22 @@
 }
 
 .main-clock-div {
-  background-color: #F3F4F6;
+  background-color: #f3f4f6;
 }
 
 .display-positive {
-    width: 50px;
-    border: 5px solid #d3d3d3;
-    height: 50px;
-    border-radius: 50%;
-    margin: auto;
-    font-size: small;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    color: #738497;
+  width: 50px;
+  border: 5px solid #d3d3d3;
+  height: 50px;
+  border-radius: 50%;
+  margin: auto;
+  font-size: small;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: #738497;
 }
 
 .all-activities {
