@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -9,16 +9,14 @@ import { createActivity } from '../actions/activitiesAction';
 import { checkToken } from '../helpers/token';
 
 const CreateActivity = () => {
+  const history = useHistory();
   const [title, setTitle] = useState('');
   const [total, setTotal] = useState('');
   const dispatch = useDispatch();
 
   const submitActivity = event => {
-    const form = new FormData();
-    Form.append('title', title);
-    Form.append('total', total);
-    dispatch(createActivity(form));
     event.preventDefault();
+    dispatch(createActivity({ title, total }, history));
   };
 
   const validToken = checkToken();
@@ -35,11 +33,9 @@ const CreateActivity = () => {
         <Form.Group controlId="formBasicTotal">
           <Form.Control type="number" placeholder="Enter a total" value={total} onChange={e => setTotal(e.target.value)} />
         </Form.Group>
-        <Link to="/activities">
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Link>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
       </Form>
     </Jumbotron>
   );

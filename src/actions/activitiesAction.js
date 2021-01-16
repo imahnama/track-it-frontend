@@ -46,12 +46,12 @@ export const getActivities = () => async dispatch => {
 };
 
 export const createActivity = (form, history) => async dispatch => {
-  history.push('/activities');
   dispatch(getActivitiesRequest());
   const method = 'post';
   try {
     await CreateActivityRequest(method, form);
     dispatch(getActivities());
+    history.push('/activities');
   } catch (error) {
     dispatch(getActivitiesFailure());
   }

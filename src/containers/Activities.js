@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Activity from '../components/Activity';
 import { getActivities } from '../actions/activitiesAction';
+import '../styles/App.css';
 
 const Activities = () => {
   const activitiesReducer = useSelector(state => state.activitiesReducer);
@@ -17,43 +18,21 @@ const Activities = () => {
   result.splice(4, 2);
   const finalValue = result.join(' ');
 
-  return activitiesReducer.loading ? (
-    <div data-testid="appActivities" className="mt-4">
-      {' '}
-      <h1> Loading....</h1>
-      {' '}
-    </div>
-  )
-    : activitiesReducer.error ? (
-      <div data-testid="appActivities">
-        {' '}
-        { activitiesReducer.error }
-        {' '}
+  return (
+    <div>
+      <div className="d-flex justify-content-center mt-3 font-weight-bold">
+        { finalValue }
       </div>
-    )
-      : (
-        <div data-testid="appActivities" className="home-section">
+      <div className="ml-2 all-activities">
+        {
+          activitiesReducer.activities.map((activity, key) => (
+            <Activity activity={activity} key={key} />
+          ))
 
-          <div className="d-flex justify-content-center align-items-center py-3 date-section">
-            <div className="first-div">
-              <i className="fas fa-angle-left" />
-            </div>
-            <div className="second-div">
-              { finalValue }
-            </div>
-            <div className="third-div">
-              <i className="fas fa-angle-right" />
-            </div>
-          </div>
-          <div className="d-flex activities-main row">
-            {
-                activitiesReducer.activities.map((activity, key) => (
-                  <Activity activity={activity} key={key} />
-                ))
-                }
-          </div>
-        </div>
-      );
+          }
+      </div>
+    </div>
+  );
 };
 
 export default Activities;

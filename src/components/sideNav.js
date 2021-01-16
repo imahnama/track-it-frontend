@@ -16,7 +16,7 @@ const SideNav = () => {
         <FontAwesomeIcon className="fa-5x text-white" icon={faHome} />
         <p className="text-white m-3">Home </p>
       </div>
-      <div className="bg-dark p-4 mt-1 activity">
+      <div className="bg-dark p-4 mt-1">
         <Link to="/create-activity">
           <FontAwesomeIcon className="ml-3 fa-5x text-white" icon={faChartLine} />
           <p className="text-white p-3">Create Activity </p>

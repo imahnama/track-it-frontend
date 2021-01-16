@@ -52,24 +52,26 @@ const CreateMeasurement = ({ location }) => {
     dispatch(createMeasurement({ duration, date }, activity.id));
   };
   return (
-    <div data-testid="appCreateMeasurement" className="measure-section">
-      <div className="activity-header">
-        <p style={{
-          color: 'grey',
-        }}
+    <div className="main-clock-div">
+      <div>
+        <p
+          className="text-center pt-3"
+          style={{
+            color: 'grey',
+          }}
         >
-          Measure
+          Start Measurement
           {' '}
           { }
         </p>
       </div>
-      <div className="mx-auto mt-4 clock-border">
-        <div className="h1 d-flex justify-content-center">
-          <p>{ watch }</p>
+      <div className="mx-auto mt-4 watch-border bg-light">
+        <div className="d-flex justify-content-center">
+          <p className="watch">{ watch }</p>
         </div>
       </div>
-      <div className="d-flex justify-content-center mt-4 bg-white p-2 lower-section-button">
-        <button type="button" onClick={startWatch} className="start-watch mr-1 text-white">Start</button>
+      <div className="d-flex justify-content-center mt-4 bg-white p-2">
+        <button type="button" onClick={startWatch} className="btn-success btn-lg mr-1 text-white watch-buttons">Start</button>
         <Link
           className="text-white stop-watch-link"
           to={{
@@ -77,7 +79,7 @@ const CreateMeasurement = ({ location }) => {
             state: activity,
           }}
         >
-          <button type="button" onClick={stopWatch} className="stop-watch mr-1 text-white">
+          <button type="button" onClick={stopWatch} className="btn-info btn-lg mr-1 text-white watch-buttons">
             Stop
           </button>
         </Link>

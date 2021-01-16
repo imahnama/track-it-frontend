@@ -5,3 +5,44 @@
 .test {
   background-color: #43b5e8;
 }
+
+.watch-border {
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+}
+
+.watch {
+  font-size: 3em;
+  margin-top: 2.7em;
+}
+
+.main-clock-div {
+  background-color: #F3F4F6;
+}
+
+.display-positive {
+    width: 50px;
+    border: 5px solid #d3d3d3;
+    height: 50px;
+    border-radius: 50%;
+    margin: auto;
+    font-size: small;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: #738497;
+}
+
+.all-activities {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-right: 15px;
+}
+
+.watch-buttons {
+  width: 150px;
+  border: none;
+}

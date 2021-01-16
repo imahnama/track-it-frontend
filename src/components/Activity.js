@@ -16,21 +16,21 @@ const Activity = ({ activity }) => {
   };
 
   return (
-    <div>
-      <Card className="w-25 ml-2 mt-4">
-        <h2>{ activity.title }</h2>
+    <div className="ml-3 mt-3">
+      <Card className="p-3 activity">
+        <h3>{ activity.title }</h3>
         <span>{ activity.total }</span>
         <p className="d-flex justify-content-between p-4">
           <Link
             className="links-info"
             to={{
-              pathname: `/activity/${activity.id}/measurements`,
+              pathname: `/activity/${activity.id}/create-measurements`,
               state: activity,
             }}
           >
             <Button variant="info" className="btn">Details</Button>
           </Link>
-          <FontAwesomeIcon className="fa-lg" icon={faTrash} onClick={() => deleteAct(activity.id)} />
+          <FontAwesomeIcon className="fa-lg text-danger" icon={faTrash} onClick={() => deleteAct(activity.id)} />
         </p>
       </Card>
     </div>

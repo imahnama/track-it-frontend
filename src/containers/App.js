@@ -9,6 +9,7 @@ import Information from '../components/information';
 import CreateActivity from '../components/createActivity';
 import Activities from './Activities';
 import CreateMeasurement from '../components/CreateMeasurement';
+import Measurements from './Measurements';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route exact path="/information" component={Information} />
           <Route exact path="/create-activity" component={CreateActivity} />
           <Route exact path="/activities" component={Activities} />
-          <Route exact path="/activity/:id/create" component={CreateMeasurement} />
+          <Route exact path="/activity/:id/measurements" component={Measurements} />
+          <Route exact path="/activity/:id/create-measurements" component={CreateMeasurement} />
         </Switch>
       </Router>
     </div>
