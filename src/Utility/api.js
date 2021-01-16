@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://evening-shore-19249.herokuapp.com/';
+const baseUrl = 'https://evening-shore-19249.herokuapp.com';
 
 const headers = { headers: { Authorization: `Bearer ${localStorage.tokenObj ? JSON.parse(localStorage.tokenObj).token : ''}` } };
 
