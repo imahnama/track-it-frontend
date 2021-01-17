@@ -13,6 +13,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Version
 
+[Live Link][https://final-capstone.netlify.app/]
+
 ## Project Setup
 
 - Clone the Project to your local machine
