@@ -14,7 +14,7 @@ import Measurements from './Measurements';
 function App() {
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <NavBar />
         <Switch>
           <Route exact path="/" component={Login} />
@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/activity/:id/measurements" component={Measurements} />
           <Route exact path="/activity/:id/create-measurements" component={CreateMeasurement} />
         </Switch>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

@@ -6,7 +6,7 @@ export const AUTHENTICATED = 'authenticated_user';
 
 export function receiveLogin({ email, password }) {
   return async dispatch => {
-    const path = 'auth/login';
+    const path = 'create';
     const method = 'post';
     const data = { email, password };
     try {
