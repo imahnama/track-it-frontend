@@ -129,7 +129,7 @@ Measurement.propTypes = {
     duration: PropTypes.string,
   }).isRequired,
   index: PropTypes.number.isRequired,
-  diffVal: PropTypes.arrayOf(PropTypes.string).isRequired,
+  diffVal: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default Measurement;

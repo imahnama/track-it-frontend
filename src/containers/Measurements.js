@@ -41,7 +41,7 @@ const Measurements = ({ location }) => {
         <div className="d-flex flex-row-reverse justify-content-between mr-4 mt-3">
           <Link
             to={{
-              pathname: `/activity/${activity.id}/create`,
+              pathname: `/activity/${activity.id}/create-measurements`,
               state: activity,
             }}
           >
