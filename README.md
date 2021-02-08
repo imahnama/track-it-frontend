@@ -13,7 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Version
 
-[Live Link][https://final-capstone.netlify.app/]
+[Live Link][https://calm-garden-84595.herokuapp.com/]
 
 ## Project Setup
 
