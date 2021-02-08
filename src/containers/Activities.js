@@ -8,10 +8,13 @@ import '../styles/App.css';
 
 const Activities = () => {
   const activitiesReducer = useSelector(state => state.activitiesReducer);
+
+  const authenticationToken = useSelector(state => state.authReducer.authenticated);
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getActivities());
-  }, []);
+    dispatch(getActivities(authenticationToken));
+  }, [authenticationToken]);
 
   const todaysDate = new Date();
   const result = todaysDate.toUTCString().split(' ');
@@ -28,7 +31,6 @@ const Activities = () => {
           activitiesReducer.activities.map((activity, key) => (
             <Activity activity={activity} key={key} />
           ))
-
           }
       </div>
     </div>

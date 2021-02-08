@@ -11,7 +11,7 @@ import { deleteActivity } from '../actions/activitiesAction';
 const Activity = ({ activity }) => {
   const dispatch = useDispatch();
 
-  const deleteAct = id => {
+  const delActivity = id => {
     dispatch(deleteActivity(id));
   };
 
@@ -30,7 +30,7 @@ const Activity = ({ activity }) => {
           >
             <Button variant="info" className="btn">Details</Button>
           </Link>
-          <FontAwesomeIcon className="fa-lg text-danger" icon={faTrash} onClick={() => deleteAct(activity.id)} />
+          <FontAwesomeIcon className="fa-lg text-danger" icon={faTrash} onClick={() => delActivity(activity.id)} />
         </p>
       </Card>
     </div>

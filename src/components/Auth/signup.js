@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+/* eslint-disable react/require-default-props */
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { checkToken } from '../../helpers/token';
 import { receiveSignUp } from '../../actions/authActions';
 
-const Signup = () => {
+const Signup = props => {
+  const { history } = props;
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -15,12 +18,20 @@ const Signup = () => {
   const validToken = checkToken();
   if (validToken === true) { return (<Redirect to="/homepage" />); }
 
+  const authenticationToken = useSelector(state => state.authReducer.authenticated);
+
   const submitData = event => {
     event.preventDefault();
-    dispatch(receiveSignUp({ name, email, password }));
+    dispatch(receiveSignUp({ name, email, password }, history));
   };
 
   const errorMessage = useSelector(state => state.authReducer.error);
+
+  useEffect(() => {
+    if (authenticationToken) {
+      history.push('/homepage');
+    }
+  }, [authenticationToken]);
 
   return (
     <div>
@@ -49,6 +60,10 @@ const Signup = () => {
       </Form>
     </div>
   );
+};
+
+Signup.propTypes = {
+  history: PropTypes.string,
 };
 
 export default Signup;

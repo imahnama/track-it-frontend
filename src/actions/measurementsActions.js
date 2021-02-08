@@ -1,16 +1,11 @@
 import { LoadMeasurementRequest, CreateMeasurementRequest } from '../Utility/api';
+import { measurementErrors } from './measurement';
 
 export const FETCH_MEASUREMENTS_SUCCESS = 'FETCH_MEASUREMENTS_SUCCESS';
-export const FETCH_MEASUREMENTS_FAILURE = 'FETCH_MEASUREMENTS_FAILURE';
 
 export const fetchMeasurementsSuccess = measurements => ({
   type: FETCH_MEASUREMENTS_SUCCESS,
   payload: measurements,
-});
-
-export const fetchMeasurementsFailure = error => ({
-  type: FETCH_MEASUREMENTS_FAILURE,
-  payload: error,
 });
 
 export const fetchMeasurements = id => async dispatch => {
@@ -20,8 +15,7 @@ export const fetchMeasurements = id => async dispatch => {
     const measurements = response.data;
     dispatch(fetchMeasurementsSuccess(measurements));
   } catch (error) {
-    const errMsg = error;
-    dispatch(fetchMeasurementsFailure(errMsg));
+    dispatch(measurementErrors([error.response.data.message]));
   }
 };
 
@@ -32,6 +26,6 @@ export const createMeasurement = ({ duration, date }, activityId) => async dispa
     await CreateMeasurementRequest(method, data, activityId);
     dispatch(fetchMeasurements(activityId));
   } catch (error) {
-    dispatch(fetchMeasurementsFailure(error));
+    dispatch(measurementErrors([error.response.data.message]));
   }
 };

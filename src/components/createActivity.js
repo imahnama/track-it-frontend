@@ -1,15 +1,15 @@
-/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { createActivity } from '../actions/activitiesAction';
 import { checkToken } from '../helpers/token';
 
-const CreateActivity = () => {
-  const history = useHistory();
+const CreateActivity = ({ history }) => {
   const [title, setTitle] = useState('');
   const [total, setTotal] = useState('');
   const dispatch = useDispatch();
@@ -39,6 +39,10 @@ const CreateActivity = () => {
       </Form>
     </Jumbotron>
   );
+};
+
+CreateActivity.propTypes = {
+  history: PropTypes.string,
 };
 
 export default CreateActivity;

@@ -1,8 +1,8 @@
 import { GetActivityRequest, CreateActivityRequest, DeleteActivityRequest } from '../Utility/api';
+import { activityErrors } from './activity';
 
 export const GET_ACTIVITIES_REQUEST = 'GET_ACTIVITIES_REQUEST';
 export const GET_ACTIVITIES_SUCCESS = 'GET_ACTIVITIES_SUCCESS';
-export const GET_ACTIVITIES_FAILURE = 'GET_ACTIVITIES_FAILURE';
 export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 
 export const getActivitiesSuccess = activities => ({
@@ -12,11 +12,6 @@ export const getActivitiesSuccess = activities => ({
 
 export const getActivitiesRequest = () => ({
   type: GET_ACTIVITIES_REQUEST,
-});
-
-export const getActivitiesFailure = error => ({
-  type: GET_ACTIVITIES_FAILURE,
-  payload: error,
 });
 
 export const deleteActivityRequest = id => ({
@@ -30,18 +25,18 @@ export const deleteActivity = id => async dispatch => {
     await DeleteActivityRequest(method, id);
     dispatch(deleteActivityRequest(id));
   } catch (error) {
-    dispatch(getActivitiesFailure(error));
+    dispatch(activityErrors([error.response.data.message]));
   }
 };
 
-export const getActivities = () => async dispatch => {
+export const getActivities = token => async dispatch => {
   const method = 'get';
   try {
-    const response = await GetActivityRequest(method);
+    const response = await GetActivityRequest(method, token);
     const activities = response.data;
     dispatch(getActivitiesSuccess(activities));
   } catch (error) {
-    dispatch(getActivitiesFailure());
+    dispatch(activityErrors([error.response.data.message]));
   }
 };
 
@@ -53,6 +48,6 @@ export const createActivity = (form, history) => async dispatch => {
     dispatch(getActivities());
     history.push('/activities');
   } catch (error) {
-    dispatch(getActivitiesFailure());
+    dispatch(activityErrors([error.response.data.message]));
   }
 };

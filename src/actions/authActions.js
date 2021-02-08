@@ -1,7 +1,7 @@
 import { unauthenticatedRequest } from '../Utility/api';
 import { saveToken } from '../helpers/token';
+import { setErrors } from './error';
 
-export const AUTHENTICATION_ERROR = 'authentication_error';
 export const AUTHENTICATED = 'authenticated_user';
 
 export function receiveLogin({ email, password }) {
@@ -11,19 +11,18 @@ export function receiveLogin({ email, password }) {
     const data = { email, password };
     try {
       const response = await unauthenticatedRequest(method, path, data);
-      dispatch({ type: AUTHENTICATED });
-      saveToken(response.data.auth_token);
-      window.location.href = '/homepage';
-    } catch (error) {
       dispatch({
-        type: AUTHENTICATION_ERROR,
-        payload: 'Invalid email or password',
+        payload: response.data.auth_token,
+        type: AUTHENTICATED,
       });
+      saveToken(response.data.auth_token);
+    } catch (error) {
+      dispatch(setErrors([error.response.data.message]));
     }
   };
 }
 
-export function receiveSignUp({ name, email, password }) {
+export function receiveSignUp({ name, email, password }, history) {
   return async dispatch => {
     const path = 'signup';
     const method = 'post';
@@ -32,12 +31,9 @@ export function receiveSignUp({ name, email, password }) {
       const response = await unauthenticatedRequest(method, path, data);
       dispatch({ type: AUTHENTICATED });
       saveToken(response.data.auth_token);
-      window.location.href = '/homepage';
+      history.push('/homepage');
     } catch (error) {
-      dispatch({
-        type: AUTHENTICATION_ERROR,
-        payload: error.response.data.message,
-      });
+      dispatch(setErrors([error.response.data.message]));
     }
   };
 }

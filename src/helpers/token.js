@@ -18,5 +18,5 @@ export const saveToken = token => {
     expiresAt: NOW + 86400000,
   };
 
-  localStorage.setItem('tokenObj', JSON.stringify(tokenObj));
+  return localStorage.setItem('tokenObj', JSON.stringify(tokenObj));
 };
