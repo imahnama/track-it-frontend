@@ -46,3 +46,10 @@
   width: 150px;
   border: none;
 }
+
+@media only screen and (max-width: 600px) {
+  .field {
+    background-color: orange;
+    width: 200px;
+  }
+}
