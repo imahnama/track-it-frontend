@@ -9,11 +9,6 @@ export const unauthenticatedRequest = async (method, path, data) => {
   return response;
 };
 
-export const authenticatedRequest = async (method, path, data, token) => {
-  const response = await axios[method](`${baseUrl}/${path}`, data, headers(token));
-  return response;
-};
-
 export const GetActivityRequest = async (method, token) => {
   const response = await axios[method](`${baseUrl}/activities`, headers(token));
   return response;
