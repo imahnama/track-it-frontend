@@ -42,7 +42,8 @@ const CreateActivity = ({ history }) => {
 };
 
 CreateActivity.propTypes = {
-  history: PropTypes.string,
+  history: PropTypes.shape({
+    history: PropTypes.string,
+  }),
 };
-
 export default CreateActivity;

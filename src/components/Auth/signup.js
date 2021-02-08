@@ -1,4 +1,5 @@
 /* eslint-disable react/require-default-props */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -63,7 +64,9 @@ const Signup = props => {
 };
 
 Signup.propTypes = {
-  history: PropTypes.string,
+  history: PropTypes.shape({
+    history: PropTypes.string,
+  }),
 };
 
 export default Signup;
