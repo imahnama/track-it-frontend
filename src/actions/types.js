@@ -1,3 +1,3 @@
+/* eslint-disable import/prefer-default-export */
+
 export const SET_ERRORS = 'SET_ERRORS';
-export const ACTIVITIES_ERRORS = 'ACTIVITIES_ERRORS';
-export const MEASUREMENT_ERRORS = 'MEASUREMENT_ERRORS';

@@ -1,5 +1,5 @@
 import { GetActivityRequest, CreateActivityRequest, DeleteActivityRequest } from '../Utility/api';
-import { activityErrors } from './activity';
+import { setErrors } from './error';
 
 export const GET_ACTIVITIES_REQUEST = 'GET_ACTIVITIES_REQUEST';
 export const GET_ACTIVITIES_SUCCESS = 'GET_ACTIVITIES_SUCCESS';
@@ -25,7 +25,7 @@ export const deleteActivity = id => async dispatch => {
     await DeleteActivityRequest(method, id);
     dispatch(deleteActivityRequest(id));
   } catch (error) {
-    dispatch(activityErrors([error.response.data.message]));
+    dispatch(setErrors([error.response.data.message]));
   }
 };
 
@@ -36,7 +36,7 @@ export const getActivities = token => async dispatch => {
     const activities = response.data;
     dispatch(getActivitiesSuccess(activities));
   } catch (error) {
-    dispatch(activityErrors([error.response.data.message]));
+    dispatch(setErrors([error.response.data.message]));
   }
 };
 
@@ -48,6 +48,6 @@ export const createActivity = (form, history) => async dispatch => {
     dispatch(getActivities());
     history.push('/activities');
   } catch (error) {
-    dispatch(activityErrors([error.response.data.message]));
+    dispatch(setErrors([error.response.data.message]));
   }
 };

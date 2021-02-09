@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -19,20 +19,12 @@ const Signup = props => {
   const validToken = checkToken();
   if (validToken === true) { return (<Redirect to="/homepage" />); }
 
-  const authenticationToken = useSelector(state => state.authReducer.authenticated);
-
   const submitData = event => {
     event.preventDefault();
     dispatch(receiveSignUp({ name, email, password }, history));
   };
 
-  const errorMessage = useSelector(state => state.authReducer.error);
-
-  useEffect(() => {
-    if (authenticationToken) {
-      history.push('/homepage');
-    }
-  }, [authenticationToken]);
+  const errorMessage = useSelector(state => state.errorReducer.error);
 
   return (
     <div>

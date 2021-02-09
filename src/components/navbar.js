@@ -1,5 +1,8 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPowerOff,
@@ -10,11 +13,11 @@ import { checkToken } from '../helpers/token';
 import { signOut } from '../actions/authActions';
 import '../styles/App.css';
 
-const NavBar = () => {
+const NavBar = ({ history }) => {
   const dispatch = useDispatch();
 
   const logOut = () => {
-    dispatch(signOut());
+    dispatch(signOut(history));
   };
 
   const validToken = checkToken();
@@ -29,4 +32,10 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+NavBar.propTypes = {
+  history: PropTypes.shape({
+    history: PropTypes.string,
+  }),
+};
+
+export default withRouter(NavBar);

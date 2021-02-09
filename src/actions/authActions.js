@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { unauthenticatedRequest } from '../Utility/api';
 import { saveToken } from '../helpers/token';
 import { setErrors } from './error';
 
 export const AUTHENTICATED = 'authenticated_user';
 
-export function receiveLogin({ email, password }) {
+export function receiveLogin({ email, password }, history) {
   return async dispatch => {
     const path = 'authentication';
     const method = 'post';
@@ -16,6 +17,7 @@ export function receiveLogin({ email, password }) {
         type: AUTHENTICATED,
       });
       saveToken(response.data.auth_token);
+      history.push('/homepage');
     } catch (error) {
       dispatch(setErrors([error.response.data.message]));
     }
@@ -38,7 +40,11 @@ export function receiveSignUp({ name, email, password }, history) {
   };
 }
 
-export function signOut() {
-  localStorage.clear('tokenObj');
-  window.location.href = '/';
+export function signOut(history) {
+  // localStorage.clear('tokenObj');
+  // history.push('/');
+  return dispatch => {
+    localStorage.clear('tokenObj');
+    history.push('/');
+  };
 }

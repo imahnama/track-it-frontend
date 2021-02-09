@@ -1,5 +1,5 @@
 import { LoadMeasurementRequest, CreateMeasurementRequest } from '../Utility/api';
-import { measurementErrors } from './measurement';
+import { setErrors } from './error';
 
 export const FETCH_MEASUREMENTS_SUCCESS = 'FETCH_MEASUREMENTS_SUCCESS';
 
@@ -15,7 +15,7 @@ export const fetchMeasurements = id => async dispatch => {
     const measurements = response.data;
     dispatch(fetchMeasurementsSuccess(measurements));
   } catch (error) {
-    dispatch(measurementErrors([error.response.data.message]));
+    dispatch(setErrors([error.response.data.message]));
   }
 };
 
@@ -26,6 +26,6 @@ export const createMeasurement = ({ duration, date }, activityId) => async dispa
     await CreateMeasurementRequest(method, data, activityId);
     dispatch(fetchMeasurements(activityId));
   } catch (error) {
-    dispatch(measurementErrors([error.response.data.message]));
+    dispatch(setErrors([error.response.data.message]));
   }
 };

@@ -4,8 +4,6 @@ import {
   GET_ACTIVITIES_REQUEST,
 } from '../actions/activitiesAction';
 
-import { ACTIVITIES_ERRORS } from '../actions/types';
-
 const initialState = {
   activities: [],
   error: '',
@@ -24,13 +22,6 @@ const activitiesReducer = (state = initialState, action) => {
         ...state,
         activities: action.payload,
         error: '',
-        loading: false,
-      };
-    case ACTIVITIES_ERRORS:
-      return {
-        ...state,
-        activities: [],
-        error: action.payload,
         loading: false,
       };
     case DELETE_ACTIVITY:
