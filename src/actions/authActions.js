@@ -19,7 +19,8 @@ export function receiveLogin({ email, password }, history) {
       saveToken(response.data.auth_token);
       history.push('/homepage');
     } catch (error) {
-      dispatch(setErrors([error.response.data.message]));
+      const value = [error.response.data.message];
+      dispatch(setErrors(value[0]));
     }
   };
 }
@@ -35,7 +36,8 @@ export function receiveSignUp({ name, email, password }, history) {
       saveToken(response.data.auth_token);
       history.push('/homepage');
     } catch (error) {
-      dispatch(setErrors([error.response.data.message]));
+      const value = [error.response.data.message];
+      dispatch(setErrors(value[0]));
     }
   };
 }
