@@ -6,7 +6,6 @@ const headers = (tokenObj = JSON.parse(localStorage.getItem('tokenObj')).token) 
 
 export const unauthenticatedRequest = async (method, path, data) => {
   const response = await axios[method](`${baseUrl}/${path}`, data);
-  console.log(data);
   return response;
 };
 
