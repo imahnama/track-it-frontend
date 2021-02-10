@@ -41,8 +41,6 @@ export function receiveSignUp({ name, email, password }, history) {
 }
 
 export function signOut(history) {
-  // localStorage.clear('tokenObj');
-  // history.push('/');
   return dispatch => {
     localStorage.clear('tokenObj');
     history.push('/');

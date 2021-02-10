@@ -24,7 +24,6 @@ const Login = props => {
   };
 
   const errorMessage = useSelector(state => state.errorReducer.error);
-
   return (
     <div>
       <Form className="w-25 m-auto pt-5" onSubmit={saveData}>

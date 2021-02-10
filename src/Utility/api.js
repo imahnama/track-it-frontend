@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8080';
+const baseUrl = 'https://evening-shore-19249.herokuapp.com';
 
 const headers = (tokenObj = JSON.parse(localStorage.getItem('tokenObj')).token) => ({ headers: { Authorization: `Bearer ${tokenObj}` } });
 
 export const unauthenticatedRequest = async (method, path, data) => {
   const response = await axios[method](`${baseUrl}/${path}`, data);
+  console.log(data);
   return response;
 };
 
